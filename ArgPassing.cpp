@@ -2,68 +2,78 @@
 #include <string>
 using namespace std;
 
-// Pass by Value vs Pass by referrence
-// It has to do with functions
+struct Node {
+    string data;
+    Node * next;
 
-void UpdateNum_PassByValue(int& n)
-{
-    n += 100;
-    cout << "After mod: " << n << endl;
-}
-
-int main() 
-{
-    int robux = 1000;
-    cout << "Before mod: " << robux << endl;
-
-    UpdateNum_PassByValue(robux);
-    cout << robux << endl;
+    // constructor
+    // to initialize data as input
+    // to initialize next ptr as null 
+    Node (const string& input) : data(input), next(nullptr) {}
+};
 
 
-    return 0;
-}
+class LinkedList {
+private:
+    Node * head;
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public:
+    // constructor
+    // to initialize head ptr as null
+    LinkedList() : head(nullptr) {}
 
-#include <iostream>
-#include <string>
-using namespace std;
-
-// Pass by Value vs Pass by referrence
-// It has to do with functions
-
-// Modify an array by reference
-void Array_Multiplayer(int (&someArray)[10])
-{
-    // when there's &
-    // we mess with teh original data
-    for(int& i : someArray)
+    void append(const string& input)
     {
-        i = i * 2;
+        // create a new Node
+        // set newNode ptr to point to the newly created node
+        Node * newNode = new Node(input);
+
+        // check if the linked list is currently empty
+        if(head == nullptr)
+        {
+            // set head ptr to point to the same node that newNode ptr is pointing at
+            head = newNode;
+        
+        } else
+        {
+            // else if it is not empty
+            // traverse the linked list to get to the destination where the new node has to be added
+
+            // Declare current ptr and set it to point to the same node hear ptr is pointing at
+            Node * current;
+            current = head;
+
+            // move current ptr to point to the same node the next ptr of the current node is pointing at
+            // while the next ptr of the current node is not pointing to null, keep shifting current ptr            
+            while(current -> next != nullptr)
+            {
+                current = current  -> next;
+            }
+
+            current -> next = newNode; 
+
+        }
+
+        void DisplayNodesData()
+        {
+            Node * current;
+            current = head;
+
+            cout << curent -> data
+                current = 
+        }
     }
-}
+};
 
-int main() 
-{
-    // Initilize an interger array
-    // Array size has to be declared in the` first place
-    // c++ array has fixed size
-    int weight[10] = {1, 2, 3, 4, 5};
+int main()
+{   
+    LinkedList LL;
+    LL.append("make a sandwich");
+    LL.append("make another sandwich ")
+    LL.append("Eat all the sandwiches")
+    LL.append("pour a glass of blood")
+    LL.DisplayNodesData()
 
-    for (int i : weight)
-    {
-        cout << i << " ";
-    }
 
-    cout << endl;
-
-    Array_Multiplayer(weight);
-
-    for(int i : weight)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
-    
     return 0;
 }
