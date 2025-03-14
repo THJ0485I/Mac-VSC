@@ -41,10 +41,14 @@ class LinkedList
 new Node("Get Dressed")
 
 
-int main(
+int main()
 {
   LinkedList LL_1;
+    LL.append("")
+    LL.DisplayNodesData();
+    LL.InsertNodeAtPos("")
 
+        
   return  0;
 }
 
