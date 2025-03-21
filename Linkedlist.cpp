@@ -97,7 +97,7 @@ public:
 
         // Once the location is identified, insert the new node
         NewNode -> next = current ->  next;
-        current = NewNode
+        current -> next = NewNode
         
     }
 };
