@@ -2,7 +2,8 @@
 #include <string>
 using namespace std;
 
-struct Node {
+struct Node 
+{
     string data;
     Node * next;
 
@@ -13,7 +14,8 @@ struct Node {
 };
 
 
-class LinkedList {
+class LinkedList 
+{
 private:
     Node * head;
 
@@ -112,8 +114,10 @@ int main()
 
     LL.DisplayNodesData();
 
-    LL.InsertNodeAtPos("purchase a ticket to lady gaga's concert", 2);
+    cout << endl;
 
+    LL.InsertNodeAtPos("purchase a ticket to lady gaga's concert", 2);
+    LL.DisplayNodesData();
 
     return 0;
 }
