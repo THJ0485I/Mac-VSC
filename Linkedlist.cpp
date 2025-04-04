@@ -175,7 +175,13 @@ Node * CircularLinkedList(int n)
         //move k-1 steps forward
         for(int count = 1; count < k; count++)
         {
+            prev = current; 
             current = current -> next;
         }
     }
+
+    // Remove the k-th node
+    // Set node2 next ptr to point to node4
+    prev -> next =  current -> next;
+    cout << "Player" << current -> data << "is eliminated." << endl;
 }
