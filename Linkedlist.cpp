@@ -123,3 +123,59 @@ int main()
 
     return 0;
 }
+
+
+
+
+//////////////////////////////////
+
+// Circular Linked List
+
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node * next;
+
+    //Constructor  
+    Node(int val) : data(val), next(nullptr){}
+};
+
+// Function to build a circular linked list
+// The function has to return the head ptr of a circular linked list
+// n = number of nodes
+Node * CircularLinkedList(int n)
+{
+    // create a new node ptr called head
+    // Set head to point to a new node that holds an integer 1
+    Node * head = new Node(1);
+
+    Node * current = head;
+    
+    for(int i = 2; i <= n; i++)
+    {
+        current -> next = new Node(i)
+        current = current -> next;
+    }
+
+    //last node next pointer has to return to first node
+    current -> next = head;
+
+    return head;
+
+    //Function to solve Josephus problem with sample size n, and step K
+    int Josephus(int n, int k)
+    {
+        //declare a circular linked list to begin with
+        Node * head = CircularLinkedList(n);
+        Node * prev = nullptr;
+        Node * current = head;
+
+        //move k-1 steps forward
+        for(int count = 1; count < k; count++)
+        {
+            current = current -> next;
+        }
+    }
+}
