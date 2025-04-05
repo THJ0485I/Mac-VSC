@@ -172,16 +172,37 @@ Node * CircularLinkedList(int n)
         Node * prev = nullptr;
         Node * current = head;
 
+        //the while loop repeats for as long as it has more than 1 node in the cirular linked list
+        while(current -> next != current)
+
         //move k-1 steps forward
         for(int count = 1; count < k; count++)
         {
             prev = current; 
             current = current -> next;
         }
-    }
 
-    // Remove the k-th node
-    // Set node2 next ptr to point to node4
-    prev -> next =  current -> next;
-    cout << "Player" << current -> data << "is eliminated." << endl;
+        // identify  current node (last node remaining)
+        int survivor = current -> data
+        delete current;
+        return survivor 
+        
+    }
+int main()
+{
+    int n, k;
+
+    cout << "Enter the number of players (n) :";
+    cin >> n;
+
+    cout << "Enter the step count (k): ";
+    cin >> k;
+
+    int survivor_number = Josephus(n, k);
+    cout << " the last man standing is player " << Josephus(n, k) << endl;
+    
+    return 0;
 }
+    
+
+
