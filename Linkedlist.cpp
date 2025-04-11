@@ -138,9 +138,10 @@ struct Node {
     int data;
     Node * next;
 
-    //Constructor  
-    Node(int val) : data(val), next(nullptr){}
+    // Constructor
+    Node(int val) : data(val), next(nullptr) {}
 };
+
 
 // Function to build a circular linked list
 // The function has to return the head ptr of a circular linked list
@@ -152,57 +153,137 @@ Node * CircularLinkedList(int n)
     Node * head = new Node(1);
 
     Node * current = head;
-    
+
     for(int i = 2; i <= n; i++)
     {
-        current -> next = new Node(i)
+        current -> next = new Node(i);
         current = current -> next;
     }
-
-    //last node next pointer has to return to first node
+ 
+    // last node's next ptr has to return to point to the first node
     current -> next = head;
 
     return head;
+}
 
-    //Function to solve Josephus problem with sample size n, and step K
-    int Josephus(int n, int k)
+
+// Function to solve Josephus problem with sample size n, and step k
+int Josephus(int n, int k)
+{
+    // declare a circular linked list to begin with
+    Node * head = CircularLinkedList(n);
+    Node * prev = nullptr;
+    Node * current = head;
+    
+    // the while loop repeats for as long as it has more than 1 node in the circular linked list
+    while(current -> next != current)
     {
-        //declare a circular linked list to begin with
-        Node * head = CircularLinkedList(n);
-        Node * prev = nullptr;
-        Node * current = head;
-
-        //the while loop repeats for as long as it has more than 1 node in the cirular linked list
-        while(current -> next != current)
-
-        //move k-1 steps forward
+        // move k-1 steps forward
         for(int count = 1; count < k; count++)
         {
-            prev = current; 
+            prev = current;
             current = current -> next;
         }
 
-        // identify  current node (last node remaining)
-        int survivor = current -> data
+        // Remove the k-th node
+        prev -> next = current -> next;
+        cout << "Player " << current -> data << " is eliminated." << endl;
         delete current;
-        return survivor 
-        
+
+        current = prev -> next;
     }
+
+    // identify current node (last node remaining)
+    int survivor = current -> data;
+    delete current;
+    return survivor;
+}
+
+
 int main()
 {
     int n, k;
 
-    cout << "Enter the number of players (n) :";
+    cout << "Enter the number of players(n): ";
     cin >> n;
 
-    cout << "Enter the step count (k): ";
+    cout << "Enter the step count(k): ";
     cin >> k;
 
     int survivor_number = Josephus(n, k);
-    cout << " the last man standing is player " << Josephus(n, k) << endl;
-    
+    cout << "The last man standing is player " << survivor_number << endl;
+
     return 0;
 }
+/////////////////////////////
+#include <iostream>
+using namespace std; 
+
+class Node 
+{
+public:
+    int data;
+    Node * prev;
+    Node * next;
+
+    // Constructor function
+    Node(int value)
+    {
+        data = value;
+        prev = nullptr;
+        next = nullptr;
+    }
+};
+
+class DoublyLinkedList
+{
+public:
+    Node * head;
+    Node * tail;
+    int size;
+
+    // Constrcuter function
+    DoublyLinkedList()
+    {
+        head =  nullptr;
+        tail =  nullptr;
+        size = 0
+    }
+
+    // Function that inserts a node at any given position
+    void InsertNodeAtPos(int data, int position)
+    {
+        if (position < 0) || position > size
+        {
+            cout << "Invalid position" << endl;
+            return; 
+        }
     
+        Node * NewNode = new Node(data)
 
+        // If a new node has to be inserted as the head node
+        if(position = 0)
+        {
+            NewNode -> next = head
+            head -> prev= NewNode
+            head = NewNode;
+        } else
+        {
+            // Traverse the linked lsit to get the position
+            Node * current = head;
 
+            for(int i = 0; i < position - 1; i++)
+            {
+                current = current -> next;
+            }
+            
+            NewNode -> next = current -> next;
+            NewNode -> prev = current;
+            current -> next -> prev = NewNode;
+            
+    
+                
+        }   
+    }
+    size++;
+};
