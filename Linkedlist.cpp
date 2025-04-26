@@ -287,3 +287,43 @@ public:
     }
     size++;
 };
+
+//////////////////////////////////////////////////////////////////
+
+// Least Recently Used (LRU) Cache Algorithm
+
+// Hashmap (unordered map) + Doubly Linked List
+
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+struct Node {
+    int key;
+    int value;
+    Node * prev;
+    Node * next;
+
+    // Constructor
+    Node(int k, int v) : key(k), value(v), prev(nullptr), next(nullptr) {}
+};
+
+class LRUCache 
+{
+ private:
+    unordered_map<int, NOde*> cache
+
+    // create an empty DLL
+    Node * head;
+    Node * tail;
+    int capcity;
+
+public:
+    //constructor function
+    LRUCache(int c) : capcity(c)
+    {
+        head = new Node(-1, -1);
+        tail = new Node(-1, -1);
+    }
+}
+
