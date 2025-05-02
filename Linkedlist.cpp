@@ -311,6 +311,7 @@ struct Node {
 class LRUCache 
 {
  private:
+    // create an empty hashmap
     unordered_map<int, NOde*> cache
 
     // create an empty DLL
@@ -324,6 +325,48 @@ public:
     {
         head = new Node(-1, -1);
         tail = new Node(-1, -1);
+        head -> next = tail;
+        tail -> prev aawa= head;
+    }
+
+    void put(int key, int value)
+    {
+        
+    }
+
+    void get(int key)
+    {
+        
+    }
+private:
+    void MoveToHead(Node * node)
+    {
+        RemoveNode(node);
+        AddToHead(node);
+    }
+
+    void AddToHead(Node * node)
+    {
+        node -> next = head -> nexT;
+        node -> prev = head;
+        head -> next = node;
+    }
+
+    void RemoveNode(Node * node)
+    {
+        node -> prev -> next = node -> next;
+        node -> next -> prev = node -> prev;
+    }
+
+    void put(int key, int value)
+    {
+        // if the key already exist, modify its value
+        if(cache.find(key) != cache.end())
+        {
+            Node * node = cache[key]
+            ndoe -> value = value;
+            MoveToHead(node);
+        }
     }
 }
 
