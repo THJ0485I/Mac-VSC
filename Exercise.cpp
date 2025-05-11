@@ -143,3 +143,274 @@ int main()
 
     return 0;
 }
+
+//////////////////////////////////////////////////////////////////
+
+/*
+Problem statement:
+
+Read an integer value and calculate the minimum number of banknotes 
+in which the value may be decomposed. 
+The possible banknotes are 100, 50, 20, 10, 5, 2 and 1. 
+Print the read value and the list of banknotes. 
+
+Input: The input file contains an integer value N (0 < N < 1000000).
+Output: Print the read number and the minimum quantity of each necessary banknotes
+*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int amt;
+    cout << "Enter the amount: ";
+    cin >> amt;
+
+    // sort banknotes in descending order
+    // in order ot prioritize larger banknotes
+    // create an integer array with 7 slots
+    int banknotes[7] = {100, 50, 20, 10, 5, 2, 1};
+
+    int total_notes = 0;
+
+    for (int i = 0; i < 7; i++) 
+    {
+        int quant = amt / banknotes[i];
+        if(quant > 0)
+        {
+            cout << quant << "pcs of $" << banknotes[i] << "notes" << endl;
+        }
+        amt = amt - (quant * banknotes[i]);
+
+        total_notes += quant;
+    }
+
+    cout << "minimum number of notes reuiqred: " << total_notes << endl;
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
