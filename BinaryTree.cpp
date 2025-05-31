@@ -150,6 +150,131 @@ int main() {
 
 
 
+//////////////////////////////////////////////////////////////
+
+// Binary Tree DFS (Sum all nodes)
+
+#include <iostream>
+using namespace std;
+
+// Tree node structure
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) : data(val), left(NULL), right(NULL) {}
+};
+
+void DFS_Sum(Node * node, int& sum):
+{
+  // if it hits a null node, stop recursion 
+  if(node == NULL) return;
+
+  // recurse into the left subtree
+  DFS_Sum(node -> left, sum)
+
+  // add a node's value to the sum variable
+  sum = sum + node -> data;
+
+  // recurse into the right subtree
+  DFS_Sum(node -> right, sum);
+}
+
+
+
+int main() {
+    /*
+            10
+           /  \
+          7    15
+         / \
+        3   9
+    */
+    Node* root = new Node(10);
+    root->left = new Node(7);
+    root->right = new Node(15);
+    root->left->left = new Node(3);
+    root->left->right = new Node(9);
+
+    int totalSum = 0;
+    DFS_Sum(root, totalSum);
+    cout << "Sum of all nodes (Recursive Inorder DFS): " << totalSum << endl;
+
+    return 0;
+}
+
+
+
+////////////////////////////////
+
+
+/*
+Problem: Maximum Path Sum (Part 2)
+
+Print the path that leads to the maximum path sum in the binary tree
+*/
+
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+
+    Node(int val) : data(val), left(NULL), right(NULL) {}
+};
+
+// Helper function to find max sum path from root to leaf
+void findMaxSumPath(Node* node, int currentSum, int& maxSum, vector<int>& currentPath, vector<int>& maxPath) {
+    
+    
+}
+
+int main() {
+    /*
+            10
+           /  \
+          7    15
+         / \
+        3   9
+    */
+    Node* root = new Node(10);
+    root->left = new Node(7);
+    root->right = new Node(15);
+    root->left->left = new Node(3);
+    root->left->right = new Node(9);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
