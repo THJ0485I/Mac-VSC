@@ -124,7 +124,7 @@ int findMaxValue()
   int LeftBranchMax = findMaxValue(node -> left);
 
   // Taek teh max value between left subtree, right subtree and teh subroot
-  retunr max(node -> data, max(LeftBranchMax RightBranchMax));
+  return max(node -> data, max(LeftBranchMax RightBranchMax));
 }
 
 
