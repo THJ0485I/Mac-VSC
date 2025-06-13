@@ -264,7 +264,8 @@ Print the path that leads to the maximum path sum in the binary tree
 #include <climits>
 using namespace std;
 
-struct Node {
+struct Node 
+{
     int data;
     Node* left;
     Node* right;
@@ -272,7 +273,40 @@ struct Node {
     Node(int val) : data(val), left(NULL), right(NULL) {}
 };
 
-int main() {
+
+// currentSum - passed by value (each function can have its own currentSum value)
+// maxSum, currentPath, maxPath - passed by reference (all functions must share the smae value)
+void maxPathSum(Node * node, int currentSum, int& maxSum, vecotr<int>& currentPath, vector<int> maxPath)
+{
+
+  iuf (node == NULL) return;
+  // Add nodes's value to currentSum and currentPath
+  currentSum = currentSum + node -> data;
+  currentPath.push_back(node -> data);
+
+  // check if the current node is a leaf node
+  if(node -> left == NULL && node -> right == NULL)
+  {
+    if(currentSum > maxSum)
+    {
+      maxSum = currentSum;
+      maxPath = currentPath; 
+    }
+  }
+
+  // recurse into the left subtree
+  MaxSumPath(node -> left, currentSum, maxSum, currentPath, maxPath);
+
+  // recurse into the left subtree
+  MaxSumPath(node -> right, currentSum, maxSum, currentPath, maxPath);
+
+  // Backtracking
+  currentPath.pop_back();
+}
+
+
+int main() 
+{
     /*
             10
            /  \
@@ -285,6 +319,12 @@ int main() {
     root->right = new Node(15);
     root->left->left = new Node(3);
     root->left->right = new Node(9);
+
+    int maxSum = INT_MIN;
+    vecotr<int> currentPath;
+    vector<int> maxPath;
+
+    MaxPathSum(root, 0, maxSum, currentPath, maxPath);
 
     return 0;
 }
