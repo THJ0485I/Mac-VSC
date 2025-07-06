@@ -88,3 +88,64 @@ int main() {
 }
 
 
+////////////////////////////////////
+
+/*
+Question: Unique Paths (Robot in Grid) Porblem Statment
+A robot is located at the top-left corner of an m x n grid. It can only move down or right at any point
+Find the number of unique paths from the top-left corner to the bottom-right corner 
+*/
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// m - number of rows
+// n - number of columms 
+long long uniquePaths(int m , int n)
+{
+    vector<vector<long>> dp(m, vector<long long>(n-1)); //Initialize all with 1s
+
+    
+    for(int i = 1; i < m; i++)
+    {
+        for(int j = 1; j < n; j++)
+        {
+            
+            // fill each slot with the sum f its top and left cell's value
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+        }
+    }
+}
+
+
+int main()
+{
+    int m = 3, n = 7;
+    cout << "Number of unique paths: " << uniquePaths(m, n) << endl;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
