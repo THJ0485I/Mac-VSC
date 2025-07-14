@@ -1,3 +1,5 @@
+// DP Problems needs a DP table
+
 // 0-1 Knapsack Problem
 
 #include <iostream>
@@ -127,7 +129,63 @@ int main()
     return 0;
 }
 
+////////////////////////////////////
 
+
+// Total unique ways to make change
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int countWaysToMakeChange(vector<int>& coins, int m, int n) {
+
+    // create a 2D (m + 1) x (n + 1) DP table
+    // m - the number of denominations
+    // n - amount
+    vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+    
+    // fill the first column with zeros
+    // because there's just one way to make change for amount 0
+    // that is to take no coins at all
+
+    for(int i = 0; i <= m; i++)
+    {
+        // iterate all columns
+        for(int j = 1; j <= n; j++)   
+        {
+            // total ways to make change is the sum of the following:
+            // 1. total ways to make change when current coin is NOT included
+            // 2. total ways to make change when current coin is allowed to be included
+
+            // calculate point 1
+            dp[i][j] = dp[i-1][j];
+
+            // calculate point 2:
+            // if the coin value is less then the amount j, then we're allowed to take it
+            // i - row number
+            // j - column number
+            if(coins[i-1] <= j)
+            {
+                dp[i][j] = dp[i][j] + dp[i][j-coins[i-1]];
+            }
+        }
+        
+    }
+
+    return dp[m][n]
+
+    // fill the dp table from slot (1, 1) onwards with a dp relation
+}
+
+int main() {
+    vector<int> coins = {1, 2, 5};
+    int m = coins.size();
+    int n = 5;
+    cout << "Total unique ways to make change for " << n << " is: " << countWaysToMakeChange(coins, m, n) << endl;
+    return 0;
+}
 
 
 
