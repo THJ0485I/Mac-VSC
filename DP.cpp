@@ -190,12 +190,59 @@ int main() {
 
 
 
+/////////////////////////////////
 
 
+// LeetCode 198. House Robber
+// https://leetcode.com/problems/house-robber/description/
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int rob(vector<int>& nums)
+{
+    // calculate the total number of houses
+    int N = nums.size();
+
+    if(N == 0) return 0;
+    if(N == 1) return nums[0];
+
+    // create a 1d dp table with N slots
+    // it has to keep a record of the max profit when you rob up to house i
+    vector<int> dp(N, 0);
+
+    // base cases
+    dp[0] = nums[0];
+    dp[1] = max(nums[0], nums[1]);
+
+    // for each house from house i = 2 onwards, there're two options to consider:
+    // 1. to skip it?
+    // 2. to rob it?
+
+    for(int i = 2; i < N; i++)
+    {   
+        // if you skip the current house i, then you can rob up to the previous house i - 1
+        int skip_profit = dp[i - 1];
+
+        // if you rob the current house i, then you can rob up to the previous two house i - 2 
+        int rob_profit = nums[i] + dp[i - 2];
+        dp[i] = max(skip_profit, rob_profit);
+    }
+
+    return dp[N - 1];    
+}
 
 
+int main()
+{
+    vector<int> nums = {1, 9, 1, 1, 9, 1};
 
+    cout << "Max money we can rob: " << rob(nums) << endl;
 
+    return 0;
+}
 
 
 
