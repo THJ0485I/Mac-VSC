@@ -246,7 +246,58 @@ int main()
 
 //////////////////////////////////
 
+// https://leetcode.com/problems/house-robber-iii/description/
 
+#include <iostream>
+#include <utility>
+using namespace std;
+
+//Definition for a binary tree node.
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {} // constructor
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+ 
+
+
+// Define a helper function that returns a pair of values [a, b] for each subtree
+// a - max money from a subtree if the current root node is robbed
+// b - max money from a subtree if the current root node is NOT robbed
+pair<int, int> robSubtree(TreeNode * node)
+{
+// if it hits a null node, stop recursion
+if(!node) return;
+
+// do recursion to fidn the max profit in the left subtree
+    robSubTree(node -> left)
+
+}
+
+
+// max profit when we consider the entire tree
+int rob(TreeNode* node)
+{
+    
+}
+
+
+
+int main() {
+
+    // Example usage
+    TreeNode* root = new TreeNode(3);
+    root -> left = new TreeNode(20);
+    root -> right = new TreeNode(4);
+    root -> left -> left = new TreeNode(100);
+    root -> right -> right = new TreeNode(1);
+
+
+    return 0;
+}
 
 
 
