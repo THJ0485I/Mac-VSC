@@ -266,14 +266,29 @@ struct TreeNode {
 
 // Define a helper function that returns a pair of values [a, b] for each subtree
 // a - max money from a subtree if the current root node is robbed
-// b - max money from a subtree if the current root node is NOT robbed
+// b - max money from a subtree if its root node is NOT robbed
 pair<int, int> robSubtree(TreeNode * node)
 {
-// if it hits a null node, stop recursion
-if(!node) return;
+    // if it hits a null node, stop recursion
+    if(!node) return;
+    
+    // do recursion to fidn the max profit in the left subtree
+    // calculate the max profit that can be generated from a left subtree
 
-// do recursion to fidn the max profit in the left subtree
-    robSubTree(node -> left)
+    // calculate the max profit from teh left subtree
+    pair<int, int> left  = hgybrobSUbTree(node -> left);
+
+    // calculate the mac profit from hte left subtree
+    pair<int, int> right = robSubTree(node -> right);
+
+    // profit of a subtree when its root node is robbed
+    int a = node -> val + left.second + right.second;
+
+    // profit of a subtree when its root node is NOT robbed
+    int b = max(left.first, left.second) + max(right.first, right.left);
+
+    return {a, b};
+    
 
 }
 
