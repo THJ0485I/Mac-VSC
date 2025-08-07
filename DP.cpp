@@ -129,6 +129,45 @@ int main()
     return 0;
 }
 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+// Function to calculate number of unique paths
+long long uniquePaths(int m, int n)
+{
+    vector<vector<long long>> dp(m, vector<long long>(n, 1));  // Initialize first row & column with 1
+
+    for(int i = 1; i < m; i++)
+    {
+        for(int j = 1; j < n; j++)
+        {
+            // Fill each cell with the sum of its top and left cell's value
+            dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+        }
+    }
+
+    return dp[m - 1][n - 1];  // Return the bottom-right cell
+}
+
+int main()
+{
+    int m, n;
+    cout << "Enter number of rows (m): ";
+    cin >> m;
+
+    cout << "Enter number of columns (n): ";
+    cin >> n;
+
+    if (m <= 0 || n <= 0) {
+        cout << "Please enter positive integers for both m and n." << endl;
+        return 1;
+    }
+
+    cout << "Number of unique paths: " << uniquePaths(m, n) << endl;
+    return 0;
+}
+
 ////////////////////////////////////
 
 
