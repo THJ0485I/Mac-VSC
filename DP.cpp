@@ -315,7 +315,7 @@ pair<int, int> robSubtree(TreeNode * node)
     // calculate the max profit that can be generated from a left subtree
 
     // calculate the max profit from teh left subtree
-    pair<int, int> left  = hgybrobSUbTree(node -> left);
+    pair<int, int> left  = robSub2Tree(node -> left);
 
     // calculate the mac profit from hte left subtree
     pair<int, int> right = robSubTree(node -> right);
