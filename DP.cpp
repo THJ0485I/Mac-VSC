@@ -305,37 +305,39 @@ struct TreeNode {
 
 // Define a helper function that returns a pair of values [a, b] for each subtree
 // a - max money from a subtree if the current root node is robbed
+// a: root value + previous value b
+// b: max value of previous a and b
 // b - max money from a subtree if its root node is NOT robbed
-pair<int, int> robSubtree(TreeNode * node)
-{
+pair<int, int> robSubtree(TreeNode* node) {
     // if it hits a null node, stop recursion
-    if(!node) return;
+    if (!node)
+        return {0, 0};
     
     // do recursion to fidn the max profit in the left subtree
     // calculate the max profit that can be generated from a left subtree
-
-    // calculate the max profit from teh left subtree
-    pair<int, int> left  = robSub2Tree(node -> left);
-
-    // calculate the mac profit from hte left subtree
-    pair<int, int> right = robSubTree(node -> right);
-
-    // profit of a subtree when its root node is robbed
-    int a = node -> val + left.second + right.second;
-
-    // profit of a subtree when its root node is NOT robbed
-    int b = max(left.first, left.second) + max(right.first, right.left);
-
-    return {a, b};
     
-
+    // left - a set of [a, b] from the previous left subtree
+    pair<int, int> left = robSubtree(node->left);
+    
+    // right - a set of [a, b] from the previos right subtree
+    pair<int, int> right = robSubtree(node->right);
+    
+    // profit of a subtree when its root node is robbed
+    int a = node->val + left.second + right.second;
+    
+    // profit of a subtree when its root node is NOT robbed
+    int b = max(left.first, left.second) + max(right.first, right.second);
+    
+    return {a, b};
 }
 
 
 // max profit when we consider the entire tree
-int rob(TreeNode* node)
-{
+int rob(TreeNode* node) {
+    // final - the [a, b] of the entire tree
+    pair<int, int> final = robSubtree(node);
     
+    return max(final.first, final.second);
 }
 
 
@@ -355,7 +357,27 @@ int main() {
 
 
 
+//////////////////
 
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+// Leetcode 121. Best Time to Buy and Sell Stock
+// Only 1 transaction can be made
+// in analogy to a long term investor
+
+#include <vector>
+#include <iostream>
+using namespace std;
+
+int maxProfit(vector<int>& prices)
+{
+    // total nunber of trading days
+    int N = prices.size();
+}
+
+int main()
+{
+    vector<int> prices = {7, 1, 5, 3, 6, 4};
+}
 
 
 
