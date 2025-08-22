@@ -372,6 +372,33 @@ int maxProfit(vector<int>& prices)
 {
     // total nunber of trading days
     int N = prices.size();
+
+    // Ultimate Question: Over a period of N days, what the max profit you can make
+
+    //create a 1d DP table
+    // which has to keep a record of max profit that can be made up to day i
+    // i - day number
+
+    vector<int> dp(N, 0);
+
+    // no profit can be made if there's jsut 1 day to trade up to
+    // we are only allowed to sell teh stock on a different day in the future
+    dp[0] = 0
+
+    // first assume that the stock was bought on day 0
+    int BuyPrice = prices[0]
+
+    for(int i = 1; i < N; i++)
+    {
+        // on each day, we can choose:
+        // 1. to hold the stock
+        // if you hold the stock, the max profit that you can make up to day i is just the same as the max profit that you can make up to day i-1
+        int holdprofit = ;
+        // 2. to sell it for a profit
+        int sellprofit = prices[i] - BuyPrice;
+
+    }
+    
 }
 
 int main()
